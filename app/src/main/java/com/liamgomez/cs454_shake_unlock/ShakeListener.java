@@ -21,7 +21,7 @@ public class ShakeListener extends Service implements SensorEventListener {
 
     private static final float SHAKE_GRAVITY_THRESH = 2.7F;
     private static final int RESET_INTERVAL_AFTER_MS = 3000;
-    private static final int TIME_BETWEEN_SHAKES = 500;
+    private static final int TIME_BETWEEN_SHAKES = 450;
 
     private final IBinder binder = new ShakeBinder();
     private ServiceCallbacks serviceCallbacks;
@@ -60,7 +60,7 @@ public class ShakeListener extends Service implements SensorEventListener {
             Toast.makeText(this, "No accelerometer found!", Toast.LENGTH_SHORT).show();
         }
         else {
-            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL, new Handler());
+            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME, new Handler());
         }
         return START_STICKY;
     }
